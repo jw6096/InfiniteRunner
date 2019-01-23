@@ -1,12 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CamTrack : MonoBehaviour {
 
     public float baseSpeed;
     public float maxSpeed;
-    public float incRate;
+	public float incRate;	
+
+	public Text distCount;
 
     private float speed;
     private BoxCollider2D[] targetZone;
@@ -47,6 +50,22 @@ public class CamTrack : MonoBehaviour {
             }
         }
 
-        transform.position += new Vector3(speed, 0, -10) * Time.deltaTime;
+		transform.position += new Vector3(speed, 0, -10) * Time.deltaTime;
+
+		distCount.text = "Distance: " + transform.position.x.ToString("F2");
+
 	}
+
+	void OnTriggerEnter2D(Collider2D other) 
+	{
+		//Debug.Log ("Collision: ");
+		//Debug.Log (other);
+		//Debug.Log (other.gameObject.GetComponent<SpriteRenderer> ().color);
+
+		//other.gameObject.GetComponent<SpriteRenderer> ().color = Color.red;
+
+		Debug.Log ("Death Collision");
+		other.gameObject.GetComponent<SpriteRenderer> ().color = Color.red;
+	}
+
 }
