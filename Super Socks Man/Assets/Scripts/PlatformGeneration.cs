@@ -18,7 +18,7 @@ public class PlatformGeneration : MonoBehaviour
     public void GeneratePlatforms()
     {
         float randomY = Random.Range(-2.0f, 2.0f);
-        Debug.Log(randomY);
+        //Debug.Log(randomY);
         int platformNum = Random.Range(0, 2);
         Instantiate(platforms[platformNum], new Vector3(11 * platformsGenerated, randomY, 0), Quaternion.identity);
         platformsGenerated++;

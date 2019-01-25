@@ -57,7 +57,7 @@ public class CamTrack : MonoBehaviour {
             }
         }
 
-		transform.position += new Vector3(speed, 0, -10) * Time.deltaTime;
+		transform.position += new Vector3(speed, 0, 0) * Time.deltaTime;
 
 		distCount.text = "Distance: " + transform.position.x.ToString("F2");
         distanceSinceReset = transform.position.x - distanceAtLastReset;
@@ -79,8 +79,8 @@ public class CamTrack : MonoBehaviour {
 
 		//other.gameObject.GetComponent<SpriteRenderer> ().color = Color.red;
 
-		Debug.Log ("Death Collision");
-		other.gameObject.GetComponent<SpriteRenderer> ().color = Color.red;
+		//Debug.Log ("Death Collision");
+		//other.gameObject.GetComponent<SpriteRenderer> ().color = Color.red;
         deathScreen.SetActive(true);
         speed = 0;
         gameOver = true;

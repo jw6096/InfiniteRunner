@@ -541,6 +541,10 @@ Prefab:
       propertyPath: m_WasSpriteAssigned
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1920836030355694, guid: 92ddf41112ba11c469ee447f7912b3d9, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 212438686887469024, guid: 92ddf41112ba11c469ee447f7912b3d9, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: 92ddf41112ba11c469ee447f7912b3d9, type: 2}
@@ -719,6 +723,41 @@ Prefab:
       propertyPath: deathScreen
       value: 
       objectReference: {fileID: 2049509161}
+    - target: {fileID: 61508669564134426, guid: 580f91c391f6c79438ecf4e46e40b3d2,
+        type: 2}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 61096751398501046, guid: 580f91c391f6c79438ecf4e46e40b3d2,
+        type: 2}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 61096751398501046, guid: 580f91c391f6c79438ecf4e46e40b3d2,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 61508669564134426, guid: 580f91c391f6c79438ecf4e46e40b3d2,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 61096751398501046, guid: 580f91c391f6c79438ecf4e46e40b3d2,
+        type: 2}
+      propertyPath: m_UsedByEffector
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 61779519062359092, guid: 580f91c391f6c79438ecf4e46e40b3d2,
+        type: 2}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 61415644005563884, guid: 580f91c391f6c79438ecf4e46e40b3d2,
+        type: 2}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 580f91c391f6c79438ecf4e46e40b3d2, type: 2}
   m_IsPrefabAsset: 0
@@ -918,6 +957,26 @@ Prefab:
       propertyPath: camManager
       value: 
       objectReference: {fileID: 519420028}
+    - target: {fileID: 61845465641777524, guid: bd8b6ae1df01aa341b9a72d9df809493,
+        type: 2}
+      propertyPath: m_AutoTiling
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 61845465641777524, guid: bd8b6ae1df01aa341b9a72d9df809493,
+        type: 2}
+      propertyPath: m_Size.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 61845465641777524, guid: bd8b6ae1df01aa341b9a72d9df809493,
+        type: 2}
+      propertyPath: m_Size.y
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 61845465641777524, guid: bd8b6ae1df01aa341b9a72d9df809493,
+        type: 2}
+      propertyPath: m_Offset.y
+      value: -1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bd8b6ae1df01aa341b9a72d9df809493, type: 2}
   m_IsPrefabAsset: 0
