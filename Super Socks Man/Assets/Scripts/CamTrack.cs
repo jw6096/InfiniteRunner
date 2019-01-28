@@ -12,8 +12,10 @@ public class CamTrack : MonoBehaviour {
 	public Text distCount;
     public GameObject deathScreen;
     public bool gameOver = false;
-    private float distanceSinceReset = 0;
-    private float distanceAtLastReset = 0;
+    private float distanceSinceGenerationReset = 0;
+    private float distanceSinceDifficulityIncrease = 0;
+    private float distanceAtLastGenerationReset = 0;
+    private float distanceAtLastDifficultyIncrease= 0;
 
     private float speed;
     private BoxCollider2D[] targetZone;
@@ -60,14 +62,24 @@ public class CamTrack : MonoBehaviour {
 		transform.position += new Vector3(speed, 0, 0) * Time.deltaTime;
 
 		distCount.text = "Distance: " + transform.position.x.ToString("F2");
-        distanceSinceReset = transform.position.x - distanceAtLastReset;
+        distanceSinceGenerationReset = transform.position.x - distanceAtLastGenerationReset;
+        distanceSinceDifficulityIncrease = transform.position.x - distanceAtLastDifficultyIncrease;
 
-        if(distanceSinceReset >= 5)
+        if (distanceSinceGenerationReset >= 8)
         {
             GetComponent<PlatformGeneration>().GenerateBackground();
             GetComponent<PlatformGeneration>().GeneratePlatforms();
-            distanceSinceReset = 0;
-            distanceAtLastReset = transform.position.x;
+            GetComponent<PlatformGeneration>().GenerateFloor();
+            GetComponent<PlatformGeneration>().CleanUp();
+            distanceSinceGenerationReset = 0;
+            distanceAtLastGenerationReset = transform.position.x;
+        }
+
+        if(distanceSinceDifficulityIncrease >= 25)
+        {
+            GetComponent<PlatformGeneration>().difficulty++;
+            distanceSinceDifficulityIncrease = 0;
+            distanceAtLastDifficultyIncrease = transform.position.x;
         }
 	}
 
