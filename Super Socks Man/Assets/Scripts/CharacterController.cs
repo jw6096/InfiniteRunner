@@ -157,7 +157,10 @@ public class CharacterController : MonoBehaviour {
     }
     void OnTriggerStay2D(Collider2D col)
     {
-        isJump = false;
+        if (charRigidbody.velocity.y <= .5)
+        {
+            isJump = false;
+        }
         //Debug.Log("Landed!");
     }
 
