@@ -8,8 +8,8 @@ public class CharacterController : MonoBehaviour {
     public float maxWalk;
     public float moveForce;
     public float jumpForce;
-    public GameObject camManager;
 
+    private GameObject camManager;
     private SpriteRenderer sprRender;
     private Animator sprAnimator;
     private Rigidbody2D charRigidbody;
@@ -34,6 +34,7 @@ public class CharacterController : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+        camManager = GameObject.FindGameObjectWithTag("MainCamera");
         charRigidbody = GetComponent<Rigidbody2D>();
     }
 
