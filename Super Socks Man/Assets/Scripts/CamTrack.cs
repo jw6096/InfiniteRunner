@@ -85,4 +85,10 @@ public class CamTrack : MonoBehaviour {
         speed = 0;
         gameOver = true;
 	}
+
+    public void SlowDown(int value)
+    {
+        speed -= value;
+        Debug.Log("Powerup applied! Slowdown of " + value + "!");
+    }
 }
