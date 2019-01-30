@@ -65,19 +65,22 @@ public class CamTrack : MonoBehaviour {
         distanceSinceGenerationReset = transform.position.x - distanceAtLastGenerationReset;
         distanceSinceDifficulityIncrease = transform.position.x - distanceAtLastDifficultyIncrease;
 
-        if (distanceSinceGenerationReset >= 8)
+        if (distanceSinceGenerationReset >= 5)
         {
             GetComponent<PlatformGeneration>().GenerateBackground();
             GetComponent<PlatformGeneration>().GeneratePlatforms();
             GetComponent<PlatformGeneration>().GenerateFloor();
-            GetComponent<PlatformGeneration>().CleanUp();
+            //GetComponent<PlatformGeneration>().CleanUp();
             distanceSinceGenerationReset = 0;
             distanceAtLastGenerationReset = transform.position.x;
         }
 
-        if(distanceSinceDifficulityIncrease >= 25)
+        if(distanceSinceDifficulityIncrease >= 5)
         {
-            GetComponent<PlatformGeneration>().difficulty++;
+            if (GetComponent<PlatformGeneration>().difficulty < 12)
+            {
+                GetComponent<PlatformGeneration>().difficulty++;
+            }
             distanceSinceDifficulityIncrease = 0;
             distanceAtLastDifficultyIncrease = transform.position.x;
         }

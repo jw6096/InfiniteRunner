@@ -24,7 +24,7 @@ public class PlatformGeneration : MonoBehaviour
             int spawnPlatform = Random.Range(difficulty, 15);
             if (spawnPlatform != 14 || currentHoles == difficulty)
             {
-                GameObject newFloor = Instantiate(floor, new Vector3((1.6f * floorsGenerated) + 11.25f, -5, 0), new Quaternion(0, 0, 180, 0));
+                GameObject newFloor = Instantiate(floor, new Vector3((1.6f * floorsGenerated) + 19.15f, -5, 0), new Quaternion(0, 0, 180, 0));
                 floorsToDelete.Add(newFloor);
             }
             else
