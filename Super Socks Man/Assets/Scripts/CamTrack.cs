@@ -1,28 +1,33 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CamTrack : MonoBehaviour {
+public class CamTrack : MonoBehaviour
+{
 
     public float baseSpeed;
     public float maxSpeed;
-	public float incRate;	
+    public float incRate;
 
-	public Text distCount;
+    public Text distCount;
     public GameObject deathScreen;
     public bool gameOver = false;
     private float distanceSinceGenerationReset = 0;
     private float distanceSinceDifficulityIncrease = 0;
     private float distanceAtLastGenerationReset = 0;
-    private float distanceAtLastDifficultyIncrease= 0;
+    private float distanceAtLastDifficultyIncrease = 0;
+    public float distTraveled;
+    public bool check = false;
 
     private float speed;
     private BoxCollider2D[] targetZone;
     private Camera camera;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start()
+    {
         speed = baseSpeed;
 
         camera = gameObject.GetComponent<Camera>();
@@ -41,9 +46,10 @@ public class CamTrack : MonoBehaviour {
         targetZone[3].offset = new Vector2(0, Camera.main.ScreenToWorldPoint(new Vector3(0, 0, 0)).y - 0.5f);
         targetZone[3].size = new Vector2(Camera.main.ScreenToWorldPoint(new Vector3(camera.pixelWidth, 0, 0)).x * 2, 1);
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update()
+    {
         if (!gameOver)
         {
             if (speed != maxSpeed)
@@ -59,26 +65,23 @@ public class CamTrack : MonoBehaviour {
             }
         }
 
-		transform.position += new Vector3(speed, 0, 0) * Time.deltaTime;
+        transform.position += new Vector3(speed, 0, 0) * Time.deltaTime;
 
-		distCount.text = "Distance: " + transform.position.x.ToString("F2");
+        distCount.text = "Distance: " + transform.position.x.ToString("F2");
         distanceSinceGenerationReset = transform.position.x - distanceAtLastGenerationReset;
         distanceSinceDifficulityIncrease = transform.position.x - distanceAtLastDifficultyIncrease;
 
-        if (distanceSinceGenerationReset >= 13)
+        if (distanceSinceGenerationReset >= 5)
         {
             GetComponent<PlatformGeneration>().GenerateBackground();
             GetComponent<PlatformGeneration>().GeneratePlatforms();
             GetComponent<PlatformGeneration>().GenerateFloor();
-            if (GetComponent<PlatformGeneration>().backgroundsGenerated >= 6)
-            {
-                GetComponent<PlatformGeneration>().CleanUp();
-            }
+            //GetComponent<PlatformGeneration>().CleanUp();
             distanceSinceGenerationReset = 0;
             distanceAtLastGenerationReset = transform.position.x;
         }
 
-        if(distanceSinceDifficulityIncrease >= 10)
+        if (distanceSinceDifficulityIncrease >= 5)
         {
             if (GetComponent<PlatformGeneration>().difficulty < 12)
             {
@@ -87,22 +90,23 @@ public class CamTrack : MonoBehaviour {
             distanceSinceDifficulityIncrease = 0;
             distanceAtLastDifficultyIncrease = transform.position.x;
         }
-	}
+    }
 
-	void OnTriggerEnter2D(Collider2D other) 
-	{
-		//Debug.Log ("Collision: ");
-		//Debug.Log (other);
-		//Debug.Log (other.gameObject.GetComponent<SpriteRenderer> ().color);
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        //Debug.Log ("Collision: ");
+        //Debug.Log (other);
+        //Debug.Log (other.gameObject.GetComponent<SpriteRenderer> ().color);
 
-		//other.gameObject.GetComponent<SpriteRenderer> ().color = Color.red;
+        //other.gameObject.GetComponent<SpriteRenderer> ().color = Color.red;
 
-		//Debug.Log ("Death Collision");
-		//other.gameObject.GetComponent<SpriteRenderer> ().color = Color.red;
+        //Debug.Log ("Death Collision");
+        //other.gameObject.GetComponent<SpriteRenderer> ().color = Color.red;
+        distTraveled = transform.position.x;
         deathScreen.SetActive(true);
         speed = 0;
         gameOver = true;
-	}
+    }
 
     public void SlowDown(int value)
     {
