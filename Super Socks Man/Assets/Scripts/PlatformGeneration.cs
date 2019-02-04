@@ -17,7 +17,7 @@ public class PlatformGeneration : MonoBehaviour
     private int currentHoles = 0;
     public int backgroundsGenerated = 2;
     private int platformsGenerated = 4;
-    private int floorsGenerated = 1;
+    private int floorsGenerated = 1; 
 
     public void Start()
     {
