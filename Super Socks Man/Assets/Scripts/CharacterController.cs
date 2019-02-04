@@ -8,6 +8,7 @@ public class CharacterController : MonoBehaviour {
     public float maxWalk;
     public float moveForce;
     public float jumpForce;
+    public GameObject dustCloud;
 
     private GameObject camManager;
     private SpriteRenderer sprRender;
@@ -49,6 +50,9 @@ public class CharacterController : MonoBehaviour {
                 charRigidbody.AddForce(new Vector2(0, jumpForce));
                 isJump = true;
                 //Debug.Log("Jump!");
+            } else if ((Input.GetKey("space") || Input.GetKey("up") || Input.GetKey("w")) && isJump)
+            {
+                charRigidbody.AddForce(new Vector2(0, jumpForce / 50));
             }
 
             if (Input.GetKey("left") || Input.GetKey("a"))
@@ -68,6 +72,8 @@ public class CharacterController : MonoBehaviour {
                 if (lCounter == 1)
                 {
                     isDash = true;
+
+                    Instantiate(dustCloud, gameObject.transform.position - new Vector3(0, 0.6f), Quaternion.identity).GetComponent<SpriteRenderer>().flipX = true;
                 }
 
                 if (lCounter == 0)
@@ -94,6 +100,8 @@ public class CharacterController : MonoBehaviour {
                 if (rCounter == 1)
                 {
                     isDash = true;
+
+                    Instantiate(dustCloud, gameObject.transform.position - new Vector3(0, 0.6f), Quaternion.identity);
                 }
 
                 if (rCounter == 0)

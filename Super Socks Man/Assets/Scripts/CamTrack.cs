@@ -30,16 +30,16 @@ public class CamTrack : MonoBehaviour {
         targetZone = gameObject.GetComponents<BoxCollider2D>();
 
         targetZone[0].offset = new Vector2(-Camera.main.ScreenToWorldPoint(new Vector3(0, 0, 0)).x + 0.5f, 0);
-        targetZone[0].size = new Vector2(1, Camera.main.ScreenToWorldPoint(new Vector3(0, camera.pixelHeight, 0)).y * 2);
+        targetZone[0].size = new Vector2(1, Camera.main.ScreenToWorldPoint(new Vector3(0, camera.pixelHeight, 0)).y * 2.5f);
 
-        targetZone[1].offset = new Vector2(Camera.main.ScreenToWorldPoint(new Vector3(0, 0, 0)).x - 0.5f, 0);
-        targetZone[1].size = new Vector2(1, Camera.main.ScreenToWorldPoint(new Vector3(0, camera.pixelHeight, 0)).y * 2);
+        targetZone[1].offset = new Vector2(Camera.main.ScreenToWorldPoint(new Vector3(0, 0, 0)).x - 1.8f, 0);
+        targetZone[1].size = new Vector2(1, Camera.main.ScreenToWorldPoint(new Vector3(0, camera.pixelHeight, 0)).y * 2.5f);
 
         targetZone[2].offset = new Vector2(0, -Camera.main.ScreenToWorldPoint(new Vector3(0, 0, 0)).y + 0.5f);
-        targetZone[2].size = new Vector2(Camera.main.ScreenToWorldPoint(new Vector3(camera.pixelWidth, 0, 0)).x * 2, 1);
+        targetZone[2].size = new Vector2(Camera.main.ScreenToWorldPoint(new Vector3(camera.pixelWidth, 0, 0)).x * 2.5f, 1);
 
-        targetZone[3].offset = new Vector2(0, Camera.main.ScreenToWorldPoint(new Vector3(0, 0, 0)).y - 0.5f);
-        targetZone[3].size = new Vector2(Camera.main.ScreenToWorldPoint(new Vector3(camera.pixelWidth, 0, 0)).x * 2, 1);
+        targetZone[3].offset = new Vector2(0, Camera.main.ScreenToWorldPoint(new Vector3(0, 0, 0)).y - 2.3f);
+        targetZone[3].size = new Vector2(Camera.main.ScreenToWorldPoint(new Vector3(camera.pixelWidth, 0, 0)).x * 2.5f, 1);
     }
 	
 	// Update is called once per frame
