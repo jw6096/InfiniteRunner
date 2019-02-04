@@ -2923,6 +2923,22 @@ Prefab:
       propertyPath: m_Offset.y
       value: -1
       objectReference: {fileID: 0}
+    - target: {fileID: 114058100262565166, guid: bd8b6ae1df01aa341b9a72d9df809493,
+        type: 2}
+      propertyPath: dustCloud
+      value: 
+      objectReference: {fileID: 1230436715998094, guid: 2913f7519b08d424c8f16624528ae38c,
+        type: 2}
+    - target: {fileID: 114058100262565166, guid: bd8b6ae1df01aa341b9a72d9df809493,
+        type: 2}
+      propertyPath: jumpForce
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 114058100262565166, guid: bd8b6ae1df01aa341b9a72d9df809493,
+        type: 2}
+      propertyPath: maxWalk
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bd8b6ae1df01aa341b9a72d9df809493, type: 2}
   m_IsPrefabAsset: 0

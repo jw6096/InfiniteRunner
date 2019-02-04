@@ -63,9 +63,11 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\CamTrack.cs" />
     <Compile Include="Assets\Scripts\CharacterController.cs" />
+    <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\MenuScripts.cs" />
     <Compile Include="Assets\Scripts\PlatformGeneration.cs" />
     <Compile Include="Assets\Scripts\PowerUp.cs" />
+    <Compile Include="Assets\Scripts\RunEffect.cs" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>Z:/game1/Super Socks Man/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>
