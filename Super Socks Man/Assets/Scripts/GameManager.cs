@@ -9,16 +9,12 @@ public class GameManager : MonoBehaviour
     AudioSource musicSource;
 
     //Store item array
-    GameObject[] storeItems;
     bool[] purchasedItems;
 
     static int coins = 200;
+    static int currentSock = -1;   //-1 means no custom sock
 
-    public GameObject[] StoreItems
-    {
-        get { return storeItems; }
-        set { storeItems = value; }
-    }
+    float musicVolume;
 
     public bool[] PurchasedItems
     {
@@ -38,6 +34,26 @@ public class GameManager : MonoBehaviour
             else
             {
                 coins = value;
+            }
+        }
+    }
+
+    public int CurrentSock
+    {
+        get { return currentSock; }
+        set
+        {
+            if (currentSock < -1)
+            {
+                currentSock = -1;
+            }
+            else if(currentSock >= purchasedItems.Length)
+            {
+                currentSock = purchasedItems.Length - 1;
+            }
+            else
+            {
+                currentSock = value;
             }
         }
     }
@@ -76,6 +92,7 @@ public class GameManager : MonoBehaviour
     //Options Methods
     public void ChangeMusicVolume(float volume)
     {
+        musicVolume = volume;
         musicSource.volume = volume;
     }
 }
