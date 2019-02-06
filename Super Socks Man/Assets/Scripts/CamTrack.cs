@@ -7,7 +7,8 @@ public class CamTrack : MonoBehaviour {
 
     public float baseSpeed;
     public float maxSpeed;
-	public float incRate;	
+	public float incRate;
+    public float distance;
 
 	public Text distCount;
     public GameObject deathScreen;
@@ -15,9 +16,7 @@ public class CamTrack : MonoBehaviour {
     public bool gameOver = false;
 
     private float distanceSinceGenerationReset = 0;
-    private float distanceSinceDifficulityIncrease = 0;
     private float distanceAtLastGenerationReset = 0;
-    private float distanceAtLastDifficultyIncrease= 0;
 
     private float speed;
     private BoxCollider2D[] targetZone;
@@ -29,7 +28,7 @@ public class CamTrack : MonoBehaviour {
         speed = baseSpeed;
 
         camera = gameObject.GetComponent<Camera>();
-        scrollbar = scrollBar.GetComponent<Scrollbar>();
+        //scrollbar = scrollBar.GetComponent<Scrollbar>();
         targetZone = gameObject.GetComponents<BoxCollider2D>();
 
         targetZone[0].offset = new Vector2(-Camera.main.ScreenToWorldPoint(new Vector3(0, 0, 0)).x + 0.5f, 0);
@@ -63,36 +62,21 @@ public class CamTrack : MonoBehaviour {
                 }
             }
 
-            scrollbar.value = speed / maxSpeed;
+            //scrollbar.value = speed / maxSpeed;
         }
 
 		transform.position += new Vector3(speed, 0, 0) * Time.deltaTime;
 
-		distCount.text = "Distance: " + transform.position.x.ToString("F2");
+        distance = transform.position.x;
+		distCount.text = "Distance: " + distance.ToString("F2");
         distanceSinceGenerationReset = transform.position.x - distanceAtLastGenerationReset;
-        distanceSinceDifficulityIncrease = transform.position.x - distanceAtLastDifficultyIncrease;
 
-        if (distanceSinceGenerationReset >= 13)
+        if (distanceSinceGenerationReset >= 16)
         {
-            GetComponent<PlatformGeneration>().GenerateBackground();
-            GetComponent<PlatformGeneration>().GeneratePlatforms();
-            GetComponent<PlatformGeneration>().GenerateFloor();
-            if (GetComponent<PlatformGeneration>().backgroundsGenerated >= 6)
-            {
-                GetComponent<PlatformGeneration>().CleanUp();
-            }
+            GetComponent<PlatformGeneration>().Generate();
+            GetComponent<PlatformGeneration>().CleanUp();
             distanceSinceGenerationReset = 0;
             distanceAtLastGenerationReset = transform.position.x;
-        }
-
-        if(distanceSinceDifficulityIncrease >= 10)
-        {
-            if (GetComponent<PlatformGeneration>().difficulty < 12)
-            {
-                GetComponent<PlatformGeneration>().difficulty++;
-            }
-            distanceSinceDifficulityIncrease = 0;
-            distanceAtLastDifficultyIncrease = transform.position.x;
         }
 	}
 
