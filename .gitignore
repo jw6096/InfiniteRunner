@@ -159,3 +159,20 @@ Super Socks Man/Library/metadata/77/7722e4dd29e937d478f51a47830fbb1e
 Super Socks Man/Library/metadata/91/91deb64e3f003ad4fac9207ff162be4e
 Super Socks Man/Library/metadata/b8/b8186c8c402f1de4584d04920bf54e8b
 Super Socks Man/Library/metadata/e6/e651ef7c363ecdf4290bb06fecd6a300
+*.ide
+*.ide-shm
+*.ide-wal
+*.ide
+*.ide
+*.ide
+*.csproj
+Super Socks Man/.vs/Super Socks Man/v15/.suo
+Super Socks Man/.vs/Super Socks Man/v15/Server/sqlite3/storage.ide
+Super Socks Man/.vs/Super Socks Man/v15/Server/sqlite3/storage.ide-wal
+Super Socks Man/Assembly-CSharp.csproj
+Super Socks Man/Library/assetDatabase3
+Super Socks Man/Library/CurrentLayout.dwlt
+*.dll
+*.mdb
+*.log
+*.cache
