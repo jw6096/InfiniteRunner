@@ -44,6 +44,21 @@ public class CharacterController : MonoBehaviour {
     {
         if (camManager.GetComponent<CamTrack>().gameOver == false)
         {
+            if (Input.GetKey("left shift") || Input.GetKey("right shift"))
+            {
+                isDash = true;
+
+                if (Input.GetKeyDown("left") || Input.GetKeyDown("a"))
+                {
+                    Instantiate(dustCloud, gameObject.transform.position - new Vector3(0, 0.6f), Quaternion.identity).GetComponent<SpriteRenderer>().flipX = true;
+                }
+
+                if (Input.GetKeyDown("right") || Input.GetKeyDown("d"))
+                {
+                    Instantiate(dustCloud, gameObject.transform.position - new Vector3(0, 0.6f), Quaternion.identity);
+                }
+            }
+
             if ((Input.GetKey("space") || Input.GetKey("up") || Input.GetKey("w")) && !isJump)
             {
                 //gameObject.transform.position += new Vector3(0, .015f, 0);
@@ -59,6 +74,13 @@ public class CharacterController : MonoBehaviour {
             {
                 charRigidbody.AddForce(new Vector2(-moveForce, 0));
                 //Debug.Log("Left!");
+
+                if (Input.GetKeyDown("left shift") || Input.GetKeyDown("right shift"))
+                {
+                    isDash = true;
+
+                    Instantiate(dustCloud, gameObject.transform.position - new Vector3(0, 0.6f), Quaternion.identity).GetComponent<SpriteRenderer>().flipX = true;
+                }
             }
 
             if (Input.GetKeyDown("left") || Input.GetKeyDown("a"))
@@ -87,8 +109,14 @@ public class CharacterController : MonoBehaviour {
             {
                 charRigidbody.AddForce(new Vector2(moveForce, 0));
                 //Debug.Log("Right!");
-            }
 
+                if (Input.GetKeyDown("left shift") || Input.GetKeyDown("right shift"))
+                {
+                    isDash = true;
+
+                    Instantiate(dustCloud, gameObject.transform.position - new Vector3(0, 0.6f), Quaternion.identity);
+                }
+            }
             if (Input.GetKeyDown("right") || Input.GetKeyDown("d"))
             {
                 if (isDash && lCounter > 0)
@@ -164,6 +192,7 @@ public class CharacterController : MonoBehaviour {
             }
         }
     }
+
     void OnTriggerStay2D(Collider2D col)
     {
         if (charRigidbody.velocity.y <= .5)
