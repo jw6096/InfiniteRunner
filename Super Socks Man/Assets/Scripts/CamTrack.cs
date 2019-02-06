@@ -11,7 +11,9 @@ public class CamTrack : MonoBehaviour {
 
 	public Text distCount;
     public GameObject deathScreen;
+    public GameObject scrollBar;
     public bool gameOver = false;
+
     private float distanceSinceGenerationReset = 0;
     private float distanceSinceDifficulityIncrease = 0;
     private float distanceAtLastGenerationReset = 0;
@@ -20,13 +22,14 @@ public class CamTrack : MonoBehaviour {
     private float speed;
     private BoxCollider2D[] targetZone;
     private Camera camera;
+    private Scrollbar scrollbar;
 
 	// Use this for initialization
 	void Start () {
         speed = baseSpeed;
 
         camera = gameObject.GetComponent<Camera>();
-
+        scrollbar = scrollBar.GetComponent<Scrollbar>();
         targetZone = gameObject.GetComponents<BoxCollider2D>();
 
         targetZone[0].offset = new Vector2(-Camera.main.ScreenToWorldPoint(new Vector3(0, 0, 0)).x + 0.5f, 0);
@@ -40,6 +43,8 @@ public class CamTrack : MonoBehaviour {
 
         targetZone[3].offset = new Vector2(0, Camera.main.ScreenToWorldPoint(new Vector3(0, 0, 0)).y - 2.3f);
         targetZone[3].size = new Vector2(Camera.main.ScreenToWorldPoint(new Vector3(camera.pixelWidth, 0, 0)).x * 2.5f, 1);
+
+
     }
 	
 	// Update is called once per frame
@@ -57,6 +62,8 @@ public class CamTrack : MonoBehaviour {
                     speed = maxSpeed;
                 }
             }
+
+            scrollbar.value = speed / maxSpeed;
         }
 
 		transform.position += new Vector3(speed, 0, 0) * Time.deltaTime;
