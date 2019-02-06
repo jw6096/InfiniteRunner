@@ -12,7 +12,7 @@ public class CamTrack : MonoBehaviour {
 
 	public Text distCount;
     public GameObject deathScreen;
-    public GameObject scrollBar;
+    public GameObject dial;
     public bool gameOver = false;
 
     private float distanceSinceGenerationReset = 0;
@@ -21,14 +21,12 @@ public class CamTrack : MonoBehaviour {
     private float speed;
     private BoxCollider2D[] targetZone;
     private Camera camera;
-    private Scrollbar scrollbar;
 
 	// Use this for initialization
 	void Start () {
         speed = baseSpeed;
 
         camera = gameObject.GetComponent<Camera>();
-        //scrollbar = scrollBar.GetComponent<Scrollbar>();
         targetZone = gameObject.GetComponents<BoxCollider2D>();
 
         targetZone[0].offset = new Vector2(-Camera.main.ScreenToWorldPoint(new Vector3(0, 0, 0)).x + 0.5f, 0);
@@ -62,6 +60,7 @@ public class CamTrack : MonoBehaviour {
                 }
             }
 
+			dial.transform.eulerAngles = new Vector3(0, 0, (-200*(speed/maxSpeed)));
             //scrollbar.value = speed / maxSpeed;
         }
 
