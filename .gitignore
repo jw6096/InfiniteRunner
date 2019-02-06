@@ -49,3 +49,20 @@ sysinfo.txt
 
 # Crashlytics generated file
 crashlytics-build.properties
+*.log
+*.mdb
+*.dll
+*.dwlt
+Super Socks Man/Library/metadata/6e/6eb6a4f6f65577c4287dce026f10e228
+Super Socks Man/Library/assetDatabase3
+*.csproj
+Super Socks Man/Library/assetDatabase3
+Super Socks Man/Library/CurrentLayout.dwlt
+Super Socks Man/Library/metadata/6e/6eb6a4f6f65577c4287dce026f10e228
+Super Socks Man/Library/ScriptAssemblies/Assembly-CSharp.dll
+Super Socks Man/Library/ScriptAssemblies/Assembly-CSharp.dll.mdb
+Super Socks Man/Library/shadercompiler-UnityShaderCompiler.exe0.log
+*.dwlt
+*.dll
+*.mdb
+*.log
