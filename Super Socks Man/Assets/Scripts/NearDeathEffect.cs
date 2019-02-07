@@ -8,51 +8,53 @@ public class NearDeathEffect : MonoBehaviour
     public Transform playerTransform;
     CamTrack track;
     SpriteRenderer effectSprite;
-    float referenceDistance;
+    public float referenceDistance;
+    public float minBlinkTime;
 
     float blinkTime;
-    float minBlinkTime;
-
     float timeSinceBlink;
 
-    bool solid;
+    float distance;
+    float centerPoint;
 
 	// Use this for initialization
 	void Start ()
     {
         referenceDistance = -9.0f;
-        minBlinkTime = 0.3f;
+        //minBlinkTime = 0.3f;
+        blinkTime = minBlinkTime;
         track = Camera.main.GetComponent<CamTrack>();
+
+        effectSprite = GetComponent<SpriteRenderer>();
 	}
 	
 	// Update is called once per frame
 	void Update ()
     {
+        timeSinceBlink += Time.deltaTime;
+        centerPoint = track.distance;
 
+        distance = playerTransform.position.x - (centerPoint + referenceDistance);
 
-        if ((playerTransform.position.x + referenceDistance) / 2.0f <= 3)
+        AlterColor();
+
+        if ((distance) <= 1.5)
         {
-            solid = true;
+            timeSinceBlink = 0.0f;
+
+            effectSprite.enabled = true;
         }
         else
         {
-            solid = false;
-
-            blinkTime = Mathf.Max(minBlinkTime, (playerTransform.position.x + referenceDistance) * 0.5f);
+            blinkTime = Mathf.Max(minBlinkTime, distance * 0.1f);
+            //Debug.Log(blinkTime);
 
             if(timeSinceBlink >= blinkTime)
             {
                 Blink();
-                AlterColor();
                 timeSinceBlink = 0.0f;
             }
         }
-	}
-
-    public void UpdatePosition(float xOffset)
-    {
-        referenceDistance = xOffset;
-        //transform.position = Vector3xOffset;
     }
 
     void Blink()
@@ -69,6 +71,6 @@ public class NearDeathEffect : MonoBehaviour
 
     void AlterColor()
     {
-        effectSprite.color = new Color(1, 1 - (playerTransform.position.x / referenceDistance), 1 - (playerTransform.position.x / referenceDistance));
+        effectSprite.color = new Color(1, (distance / 5) - 1, (distance / 5) - 1, 1 - (distance * 0.05f));
     }
 }

@@ -265,4 +265,9 @@ public class MenuScripts : MonoBehaviour
             }
         }
     }
+
+    public void CloseApplication()
+    {
+        Application.Quit();
+    }
 }
